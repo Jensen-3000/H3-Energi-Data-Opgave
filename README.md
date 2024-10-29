@@ -13,7 +13,7 @@ pip install -r requirements.txt
 Kør `main.py` script:
 
 ```sh
-python main.py
+python src/main.py
 ```
 
 For at skifte årstal, angives et årstal i `year` i `main.py`
