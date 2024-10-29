@@ -4,7 +4,15 @@ from config import BASE_URL
 
 
 def extract(year):
-    """Fetch data from the EnergiDataService API for a given year."""
+    """
+    Fetch data from the EnergiDataService API for a given year.
+
+    Parameters:
+    year (int): The year for which to fetch the data.
+
+    Returns:
+    pd.DataFrame: DataFrame containing the fetched data.
+    """
     params = {
         "offset": 0,
         "start": f"{year}-01-01T00:00",

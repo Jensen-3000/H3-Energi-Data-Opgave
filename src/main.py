@@ -7,7 +7,12 @@ from ensure_directories import ensure_directories
 
 
 def run(year):
-    """Run the ELT pipeline: extract, load, and transform."""
+    """
+    Run the ELT pipeline: extract, load, and transform.
+
+    Parameters:
+    year (int): The year for which to run the ELT process.
+    """
     print(f"Starting ELT process for the year {year}...")
 
     # Ensure directories exist

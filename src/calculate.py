@@ -1,5 +1,13 @@
 def calculate_consumption(df):
-    """Calculate total annual energy consumption from the DataFrame."""
+    """
+    Calculate total annual energy consumption from the DataFrame.
+
+    Parameters:
+    df (pd.DataFrame): DataFrame containing energy data.
+
+    Returns:
+    float: Total annual energy consumption.
+    """
     consumption_cols = [
         "ProductionLt100MW",
         "ProductionGe100MW",

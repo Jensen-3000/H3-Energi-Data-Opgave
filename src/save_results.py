@@ -3,7 +3,13 @@ from config import RESULTS_DIR, EXPORT_STATEMENT
 
 
 def save_results(results, year):
-    """Save results to a text file."""
+    """
+    Save results to a text file.
+
+    Parameters:
+    results (dict): Dictionary containing the results to be saved.
+    year (int): The year for which the results were calculated.
+    """
     output_filename = os.path.join(RESULTS_DIR, f"results_{year}.txt")
     with open(output_filename, "w") as f:
         f.write("Electricity Export Analysis\n")

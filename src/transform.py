@@ -3,7 +3,15 @@ from calculate import calculate_consumption
 
 
 def transform(filename):
-    """Calculate net export to Germany for DK1 and DK2 and its percentage of total annual energy consumption."""
+    """
+    Calculate net export to Germany for DK1 and DK2 and its percentage of total annual energy consumption.
+
+    Parameters:
+    filename (str): The filename of the CSV file containing the data.
+
+    Returns:
+    dict: Dictionary containing the calculated results.
+    """
     df = pd.read_csv(filename)
 
     # Calculate net exports for DK1 and DK2
