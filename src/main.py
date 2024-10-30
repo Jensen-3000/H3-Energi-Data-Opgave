@@ -1,43 +1,67 @@
-from config import EXPORT_STATEMENT
+from prefect import task, flow
+from ensure_directories import ensure_directories
 from extract import extract
 from load import load
 from transform import transform
 from save_results import save_results
-from ensure_directories import ensure_directories
+from visualize import visualize
+from config import EXPORT_STATEMENT
 
 
-def run(year):
-    """
-    Run the ELT pipeline: extract, load, and transform.
-
-    Parameters:
-    year (int): The year for which to run the ELT process.
-    """
-    print(f"Starting ELT process for the year {year}...")
-
-    # Ensure directories exist
+@task
+def ensure_dirs():
     ensure_directories()
 
-    # Extract data
-    df = extract(year)
 
-    # Load data
-    filename = load(df, year)
+@task
+def extract_data(year):
+    return extract([year])
 
-    # Transform data
-    result = transform(filename)
 
-    # Save results
+@task
+def load_data(df, year):
+    return load(df, year)
+
+
+@task
+def transform_data(filename):
+    return transform(filename)
+
+
+@task
+def save_results_data(result, year):
     save_results(result, year)
 
-    print(f"ELT process for the year {year} completed.")
-    print()
+
+@task
+def visualize_data(result, year):
+    visualize(result, year)
+
+
+@task
+def print_export_statement():
     print(EXPORT_STATEMENT)
+
+
+@task
+def print_final_results(result):
     print("Final Results:")
     for key, value in result.items():
         print(f"{key}: {value:.2f}")
 
 
+@flow(name="H3-BigD-Pipeline-Projekt")
+def h3_big_d_pipeline_projekt(year: int):
+    ensure_dirs()
+    df = extract_data(year)
+    filename = load_data(df, year)
+    result = transform_data(filename)
+    save_results_data(result, year)
+    visualize_data(result, year)
+    print_export_statement()
+    print_final_results(result)
+
+
 if __name__ == "__main__":
     year = 2024
-    run(year)
+    h3_big_d_pipeline_projekt(year)
