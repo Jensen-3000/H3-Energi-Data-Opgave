@@ -39,29 +39,23 @@ def visualize_data(result, year):
 
 
 @task
-def print_export_statement():
-    print(EXPORT_STATEMENT)
-
-
-@task
 def print_final_results(result):
+    print(EXPORT_STATEMENT)
     print("Final Results:")
     for key, value in result.items():
         print(f"{key}: {value:.2f}")
 
 
-@flow(name="H3-BigD-Pipeline-Projekt")
-def h3_big_d_pipeline_projekt(year: int):
+@flow
+def run_data_pipeline(year: int):
     ensure_dirs()
     df = extract_data(year)
     filename = load_data(df, year)
     result = transform_data(filename)
     save_results_data(result, year)
     visualize_data(result, year)
-    print_export_statement()
-    print_final_results(result)
+    # print_final_results(result)
 
 
 if __name__ == "__main__":
-    year = 2024
-    h3_big_d_pipeline_projekt(year)
+    run_data_pipeline(year=2024)

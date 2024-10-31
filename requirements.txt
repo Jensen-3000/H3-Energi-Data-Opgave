@@ -2,3 +2,5 @@ requests
 pandas
 prefect
 matplotlib
+python-dotenv
+seaborn

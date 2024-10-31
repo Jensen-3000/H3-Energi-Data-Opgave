@@ -39,3 +39,22 @@ For at skifte årstal, angives et årstal i `year` i `main.py`
 - `save_results.py`: Gemmer resultater til en TXT-fil.
 - `ensure_directories.py`: Sikrer, at mapperne eksisterer.
 
+
+
+
+## TODO
+
+prefect server start
+
+
+prefect work-pool create H3-Test 
+-- Vælg process
+
+prefect worker start --pool H3-Test
+
+prefect deploy -n H3-test
+
+
+// kører med det samme
+prefect deployment run 'run-data-pipeline/H3-test'
+
