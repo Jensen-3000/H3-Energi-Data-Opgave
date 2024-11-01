@@ -21,10 +21,10 @@ def visualize(results, year):
     sns.set_theme(style="whitegrid")
     sns.set_context("notebook")
 
-    # Create a bar plot with different colors for positive and negative values
+    # Create a bar plot with a single color palette
     plt.figure(figsize=(12, 6))
 
-    # Using a diverging color palette for better visual representation
+    # Using a single color palette for better visual representation
     bar_plot = sns.barplot(
         x="Metrics",
         y="Values",
@@ -32,8 +32,6 @@ def visualize(results, year):
         palette=sns.color_palette(
             "RdYlGn_r", n_colors=len(df)
         ),  # Diverging color palette
-        hue=(df["Values"] >= 0),  # Separate bars by positive/negative
-        dodge=False,
     )
 
     # Add a horizontal line at y=0
