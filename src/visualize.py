@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 def visualize(results, year):
     """
-    Create an enhanced bar chart visualization of the results.
+    Create a bar chart visualization of the results.
 
     Parameters:
     results (dict): Dictionary containing the results to be visualized.

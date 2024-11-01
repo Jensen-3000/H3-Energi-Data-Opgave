@@ -1,8 +1,8 @@
 from prefect import task, flow
 from ensure_directories import ensure_directories
-from extract import extract
-from load import load
-from transform import transform
+from ETL.extract import extract
+from ETL.load import load
+from ETL.transform import transform
 from save_results import save_results
 from visualize import visualize
 from config import EXPORT_STATEMENT
